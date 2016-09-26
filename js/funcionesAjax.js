@@ -1,7 +1,7 @@
 
 function MostrarError()
 {
-	var funcionAjax=$.ajax({url:"nexoNoExiste.php",type:"post",data:{queHacer:"MostrarTexto"}});
+	/*var funcionAjax=$.ajax({url:"nexoNoExiste.php",type:"post",data:{queHacer:"MostrarTexto"}});
 	funcionAjax.done(function(retorno){
 		$("#principal").html(retorno);
 		$("#informe").html("Correcto!!!");
@@ -12,11 +12,29 @@ function MostrarError()
 	});
 	funcionAjax.always(function(retorno){
 		//alert("siempre "+retorno.statusText);
-	});
+	});*/
+
+	$.ajax({url: "NoExiste.php"}).then(function(respuesta){
+		//cuando 
+		alert("Primero" + respuesta);
+		Console.info("Primero", respuesta);
+		$("#principal").html(retorno);
+		$("#informe").html("Correcto!!!");
+
+	}, function(respuesta){
+		alert("Segundo" + respuesta);
+		Console.info("Segundo", respuesta);
+		$("#principal").html(":(");
+		$("#informe").html(retorno.responseText);	
+	}); //las funciones del then() se disparan en el momento en que devuelva los callbacks
+
+
+
+
 }
 function MostrarSinParametros()
 {
-	var funcionAjax=$.ajax({url:"nexoTexto.php"});
+	/*var funcionAjax=$.ajax({url:"nexoTexto.php"});
 
 	funcionAjax.done(function(retorno){
 		$("#principal").html(retorno);
@@ -29,7 +47,18 @@ function MostrarSinParametros()
 	funcionAjax.always(function(retorno){
 		//alert("siempre "+retorno.statusText);
 
-	});
+	});*/
+
+		$.ajax({url : "nexoTexto.php"}).then(function(retorno){
+			$("#principal").html(retorno);
+			$("#informe").html("Correcto!!!");
+		}, function(){
+			alert("NoExiste");
+
+		})
+
+		
+
 }
 
 function Mostrar(queMostrar)
