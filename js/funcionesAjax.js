@@ -67,7 +67,7 @@ function Mostrar(queMostrar)
 	var funcionAjax=$.ajax({
 		url:"nexo.php",
 		type:"post",
-		data:{queHacer:queMostrar}
+		data:{queHacer:queMostrar} //van los parametros para nexo.php
 	});
 	funcionAjax.done(function(retorno){
 		$("#principal").html(retorno);
